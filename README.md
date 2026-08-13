@@ -19,8 +19,8 @@ La solución utiliza **Google Cloud Dataflow** para realizar la extracción de i
 
 La comunicación se realiza mediante:
 
-- **Shared VPC** en el proyecto `host-prod`.
-- **Service Project** `ahs-lakehouse-prod`.
+- **Shared VPC** en el proyecto `productivo`.
+- **Service Project** `lakedata-prod`.
 - Subnet dedicada para los procesos de **Dataflow**.
 - **Cloud NAT** para proporcionar una IP pública de salida controlada.
 - Comunicación con el proveedor mediante **TLS**.
@@ -44,9 +44,9 @@ Dataflow
     ▼
 Shared VPC
     │
-    ├── host-prod
+    ├── prod
     │
-    └── ahs-lakehouse-prod
+    └── lakedata-productivo
 
 ---
 
@@ -60,8 +60,8 @@ Permitir que los pipelines de Dataflow accedan a un proveedor externo utilizando
 
 | Tipo | Proyecto |
 |--------|------------|
-| Host Project | host-prod |
-| Service Project | ahs-lakehouse-prod |
+| Host Project | productivo |
+| Service Project | lakedata-productivo |
 
 ---
 
@@ -70,13 +70,13 @@ Permitir que los pipelines de Dataflow accedan a un proveedor externo utilizando
 ## Shared VPC
 
 ```text
-gass-vpc-prod
+vpc-prod
 ```
 
 Ubicada en:
 
 ```text
-host-prod
+prod
 ```
 
 ---
@@ -125,7 +125,7 @@ us-central1
 Red:
 
 ```text
-gass-vpc-prod
+vpc-prod
 ```
 
 ---
@@ -183,7 +183,7 @@ us-central1
 # Cuenta de servicio observada
 
 ```text
-164854402808-compute@developer.gserviceaccount.com
+0000000000compute@developer.gserviceaccount.com
 ```
 
 Roles identificados:
