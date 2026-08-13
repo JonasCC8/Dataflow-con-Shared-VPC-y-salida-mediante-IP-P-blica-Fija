@@ -13,6 +13,7 @@ La solución permite que todo el tráfico saliente de Dataflow utilice una direc
 <p align="center">
   <img src="./arquitectura-dataflow.png" alt="Arquitectura Dataflow - Integración con proveedor" width="100%">
 </p>
+
 ## Descripción
 
 La solución utiliza **Google Cloud Dataflow** para realizar la extracción de información desde el proveedor hacia el entorno de Google Cloud.
