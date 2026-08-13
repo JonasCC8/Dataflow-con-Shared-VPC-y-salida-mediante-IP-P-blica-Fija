@@ -327,4 +327,4 @@ resource.labels.gateway_name="nat-dataflow-provider"
 
 ✅ IAM validado
 
-⏳ Pendiente validación operativa mediante ejecución de Dataflow
+
