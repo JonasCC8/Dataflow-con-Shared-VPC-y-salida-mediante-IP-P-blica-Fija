@@ -9,12 +9,44 @@ La solución permite que todo el tráfico saliente de Dataflow utilice una direc
 ---
 
 # Arquitectura
+
 <p align="center">
-2
-arquitectura-dataflow.png
-3
+  <img src="./arquitectura-dataflow.png" alt="Arquitectura Dataflow - Integración con proveedor" width="100%">
 </p>
-```
+### Descripción
+
+La solución utiliza **Google Cloud Dataflow** para realizar la extracción de información desde el proveedor hacia el entorno de Google Cloud.
+
+La comunicación se realiza mediante:
+
+- **Shared VPC** en el proyecto `host-prod`.
+- **Service Project** `ahs-lakehouse-prod`.
+- Subnet dedicada para los procesos de **Dataflow**.
+- **Cloud NAT** para proporcionar una IP pública de salida controlada.
+- Comunicación con el proveedor mediante **TLS**.
+- Lista de IPs autorizadas (**Allowlist**) en el proveedor.
+- Acceso de solo lectura a la información del proveedor.
+- Sin exposición directa de las instancias de Dataflow a Internet.
+
+### Flujo de comunicación
+
+```text
+Proveedor
+    │
+    │ TLS
+    ▼
+Cloud NAT
+    │
+    │ IP pública autorizada
+    ▼
+Dataflow
+    │
+    ▼
+Shared VPC
+    │
+    ├── host-prod
+    │
+    └── ahs-lakehouse-prod
 
 ---
 
